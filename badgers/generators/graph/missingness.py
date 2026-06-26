@@ -16,10 +16,7 @@ class MissingGenerator(GeneratorMixin):
     """
 
     def __init__(self, random_generator: numpy.random.Generator = default_rng(seed=0)):
-        """
-
-        :param random_generator: A random generator
-        """
+        """Initialize the MissingGenerator."""
         self.random_generator = random_generator
 
     @abc.abstractmethod
@@ -36,13 +33,6 @@ class NodesMissingCompletelyAtRandom(MissingGenerator):
     """
 
     def __init__(self, random_generator: numpy.random.Generator = default_rng(seed=0)):
-        """
-        Initialize the missingness generator.
-
-        :param random_generator: A NumPy random number generator.
-                               Defaults to a default random number generator seeded with 0.
-        :type random_generator: numpy.random.Generator
-        """
         super().__init__(random_generator=random_generator)
 
     def generate(self, X, y=None, percentage_missing: float = 0.1) -> Tuple:
@@ -50,14 +40,10 @@ class NodesMissingCompletelyAtRandom(MissingGenerator):
         Generate a graph with a specified percentage of missing nodes.
 
         :param X: The input graph from which nodes will be removed.
-        :type X: nx.Graph
         :param y: Optional target array associated with the nodes in the graph.
                   If provided, the corresponding elements will also be removed.
-        :type y: np.ndarray, optional
         :param percentage_missing: The percentage of nodes to be removed (float value between 0 and 1).
-        :type percentage_missing: float
         :return: A tuple containing the modified graph with missing nodes and the modified target array (if provided).
-        :rtype: Tuple[nx.Graph, Optional[np.ndarray]]
         """
         assert 0 < percentage_missing < 1
         if not isinstance(X, nx.Graph):
@@ -86,13 +72,6 @@ class EdgesMissingCompletelyAtRandom(MissingGenerator):
     """
 
     def __init__(self, random_generator: numpy.random.Generator = default_rng(seed=0)):
-        """
-        Initialize the missingness generator.
-
-        :param random_generator: A NumPy random number generator.
-                                 Defaults to a default random number generator seeded with 0.
-        :type random_generator: numpy.random.Generator
-        """
         super().__init__(random_generator=random_generator)
 
     def generate(self, X, y=None, percentage_missing: float = 0.1) -> Tuple:
@@ -100,15 +79,11 @@ class EdgesMissingCompletelyAtRandom(MissingGenerator):
         Generate a graph with a specified percentage of missing edges.
 
         :param X: The input graph from which edges will be removed.
-        :type X: nx.Graph
         :param y: Optional target data associated with the edges in the graph.
                   If provided, the corresponding elements will also be removed.
                   Can be a dictionary where keys are edge tuples and values are target values.
-        :type y: dict, optional
         :param percentage_missing: The percentage of edges to be removed (float value between 0 and 1).
-        :type percentage_missing: float
         :return: A tuple containing the modified graph with missing edges and the modified target data (if provided).
-        :rtype: Tuple[nx.Graph, Optional[dict]]
         """
         assert 0 < percentage_missing < 1
         if not isinstance(X, nx.Graph):

@@ -103,16 +103,12 @@ class RandomSamplingClassesGenerator(ImbalanceGenerator):
         Randomly samples instances for each class based on the specified proportions.
 
         :param X: Input features, can be a pandas DataFrame or a numpy array.
-        :type X: Union[pandas.DataFrame, numpy.ndarray]
         :param y: Target variable, must be a pandas Series or a numpy array.
-        :type y: Union[pandas.Series, numpy.ndarray]
         :param proportion_classes: A dictionary specifying the desired proportion of each class.
                                    The keys are class labels and the values are the desired proportions.
                                    For example, to have 50% of class 'A', 30% of class 'B', and 20% of class 'C',
                                    use `proportion_classes={'A': 0.5, 'B': 0.3, 'C': 0.2}`.
-        :type proportion_classes: dict, optional
         :return: A tuple containing the sampled features (Xt) and the corresponding target values (yt).
-        :rtype: Tuple[Union[pandas.DataFrame, numpy.ndarray], Union[pandas.Series, numpy.ndarray]]
         """
         # local variables
         Xt = []

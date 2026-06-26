@@ -60,14 +60,10 @@ class MissingCompletelyAtRandom(MissingValueGenerator):
         Introduces missing values into the input features `X` completely at random according to a specified percentage.
 
         :param X: The input features, which can be a pandas DataFrame or a numpy array.
-        :type X: Union[pandas.DataFrame, numpy.ndarray]
         :param y: The target variable, which can be a pandas Series or a numpy array.
                   If not provided, it is assumed that the target is not needed and will be ignored.
-        :type y: Union[pandas.Series, numpy.ndarray, None], optional
         :param percentage_missing: The proportion of values to be replaced with missing values, expressed as a float between 0 and 1.
-        :type percentage_missing: float
         :return: A tuple containing the modified input features `Xt` with introduced missing values and the original target `y`.
-        :rtype: Tuple[Union[pandas.DataFrame, numpy.ndarray], Union[pandas.Series, numpy.ndarray, None]]
         """
         assert 0 <= percentage_missing <= 1
         # compute number of missing values per column
@@ -109,14 +105,10 @@ class DummyMissingAtRandom(MissingValueGenerator):
         and j is randomly chosen.
 
         :param X: The input features, which can be a pandas DataFrame or a numpy array.
-        :type X: Union[pandas.DataFrame, numpy.ndarray]
         :param y: The target variable, which can be a pandas Series or a numpy array.
                   If not provided, it is assumed that the target is not needed and will be ignored.
-        :type y: Union[pandas.Series, numpy.ndarray, None], optional
         :param percentage_missing: The proportion of values to be replaced with missing values, expressed as a float between 0 and 1.
-        :type percentage_missing: float
         :return: A tuple containing the modified input features `Xt` with introduced missing values and the original target `y`.
-        :rtype: Tuple[Union[pandas.DataFrame, numpy.ndarray], Union[pandas.Series, numpy.ndarray, None]]
         """
         assert 0 <= percentage_missing <= 1
         # initialize probability with zeros
